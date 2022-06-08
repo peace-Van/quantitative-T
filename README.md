@@ -2,7 +2,7 @@
 
 ![ ](/1350res/中路_1350_plot.png)
 
-Hero ranking system for *Honor of the King*, the popular MOBA game in China.
+A hero ranking system for *Honor of the King*, the popular MOBA game in China.
 The game is going to be made available worldwide soon.
 
 This project proposes a mathematical model to combine win rate, pick rate and ban rate of a hero into a score that reflects their comprehensive performance among a particular group of players. A related system for LoL is [here](https://www.mobachampion.com/tier-list/).
