@@ -5,7 +5,7 @@
 A hero ranking system for *Honor of the King*, the popular MOBA game in China.
 The game is going to be made available worldwide soon.
 
-This project proposes a mathematical (also somewhat related to finance) model to combine the win rate, pick rate and ban rate of a hero into a score that reflects their  among a particular group of players. A related system for *LoL* is [here](https://www.mobachampion.com/tier-list/).
+This project proposes a mathematical (also somewhat related to finance) model to combine the win rate, pick rate and ban rate of a hero into a score that reflects their strength among a particular group of players. A related system for *LoL* is [here](https://www.mobachampion.com/tier-list/).
 
 The code `get_rank_fitted.py` retrieves data from [苏苏的荣耀助手](https://pvp.91m.top), does the calculation and renders posters, charts and data tables (in the `res` and `1350res` folders) for visualization. **You need an account of the data platform to run the code; edit the `openId` and `accessToken` in the code as yours.**
 
