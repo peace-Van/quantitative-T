@@ -132,7 +132,6 @@ for i in range(6):
 
 # RENDER
 r_threshes.insert(0, 0); r_threshes.append(0)
-names = ['对抗路', '中路', '', '打野', '发育路', '游走']
 hints = ['——版本答案', '——主流强势英雄', '——一般强势英雄', '——大众英雄', '——弱势英雄', '——边缘英雄']
 c = heros['pickScore1350'].mean()
 for i in range(6):
