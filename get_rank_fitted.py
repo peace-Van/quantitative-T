@@ -18,7 +18,7 @@ Created on Wed Apr  6 15:48:51 2022
 
 import pandas as pd
 import numpy as np
-from bisect import bisect
+from bisect import bisect_left
 from PIL import Image
 import os
 import imgkit
@@ -127,7 +127,7 @@ for i in range(6):
             os.system(f'mkdir temp/{names[i]}_1350/T{j}')
         for row in subsets[i].itertuples():
             hero = Image.open(f'hero_img/{row.heroId}.png').convert('RGBA')
-            t = 5 - bisect(r_threshes, row.score1350)
+            t = 5 - bisect_left(r_threshes, row.score1350)
             hero.save(f'temp/{names[i]}_1350/T{t}/{row.Index}.png')
 
 # RENDER
@@ -246,6 +246,9 @@ for i in range(5):
     r_threshes[-1] = np.amax(z)
     contour = plt.contourf(x, y, z, r_threshes, cmap='coolwarm', \
                            norm=LogNorm(vmin=r_threshes[1], vmax=r_threshes[-2], clip=True))    #####
+    q = np.max(subsets[i].totalScore)   # For some exceptionally high-ranking hero that scores higher than np.amax(z)
+    if q > r_threshes[-1]:
+        r_threshes[-1] = q
     plt.axhline(50, color='k')
     plt.axvline(c[i] * 100, color='k')
     p = plt.gca()
@@ -274,7 +277,7 @@ for i in range(5):
         if i != 3 and row.skillId != 80115:
             skill = Image.open(f'skill_img/{row.skillId}.png').convert('RGBA')
             hero.paste(skill, mask=skill)
-        t = 6 - bisect(r_threshes, row.totalScore)
+        t = 6 - bisect_left(r_threshes, row.totalScore)
         hero.save(f'temp/{names[i]}/T{t}/{row.Index}.png')
         if t > 0 and not flags[t-1]:
             html_ += f'<tr style="background-color:#FFFF00"><td>T{t-1}线</td><td></td><td></td><td></td><td></td><td>{threshes[t-1]:#.2f}</td></tr>'
