@@ -9,7 +9,7 @@ Created on Wed Apr  6 15:48:51 2022
 # THE SCORING MODEL
 # Extra params are for experiment
 # I finally decide alpha=1, beta=1, mu(w)=50 (a_mu=0, b_mu=50)
-# sigma_p and sigma(w) is fitted from historical data
+# sigma_p and sigma(w) are fitted from historical data
 
 # S = log2(1 + 2 ^ (t / alpha)) * p ^ (beta / sigma_p)
 # t = (w - mu(w)) / sigma(w)
@@ -140,6 +140,8 @@ for i in range(6):
         r_threshes[-1] = np.amax(z)
         contour = plt.contourf(x, y, z, r_threshes, cmap='coolwarm', \
                                norm=LogNorm(vmin=r_threshes[1], vmax=r_threshes[-2], clip=True))  #####
+        # For some exceptionally high-ranking hero that scores higher than np.amax(z)
+        r_threshes[-1] = max(r_threshes[-1], np.max(heros.totalScore)) 
         plt.axhline(50, color='k')
         plt.axvline(c * 100, color='k')
         p = plt.gca()
@@ -246,9 +248,8 @@ for i in range(5):
     r_threshes[-1] = np.amax(z)
     contour = plt.contourf(x, y, z, r_threshes, cmap='coolwarm', \
                            norm=LogNorm(vmin=r_threshes[1], vmax=r_threshes[-2], clip=True))    #####
-    q = np.max(subsets[i].totalScore)   # For some exceptionally high-ranking hero that scores higher than np.amax(z)
-    if q > r_threshes[-1]:
-        r_threshes[-1] = q
+    # For some exceptionally high-ranking hero that scores higher than np.amax(z)
+    r_threshes[-1] = max(r_threshes[-1], np.max(subsets[i].totalScore))   
     plt.axhline(50, color='k')
     plt.axvline(c[i] * 100, color='k')
     p = plt.gca()
