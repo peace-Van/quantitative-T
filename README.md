@@ -9,6 +9,8 @@ This project proposes a mathematical (also somewhat related to finance) model to
 
 The code `get_rank_fitted.py` retrieves data from [苏苏的荣耀助手](https://pvp.91m.top), does the calculation and renders posters, charts and data tables (in the `res` and `1350res` folders) for visualization. **You need an account of the data platform to run the code; edit the `openId` and `accessToken` in the code as yours.**
 
+**Update: [苏苏的荣耀助手](https://pvp.91m.top) no longer provides the data from Aug 2022. The code will not work.**
+
 Python packages required:
 - `pandas >= 1.3.1`
 - `numpy >= 1.20.3`
